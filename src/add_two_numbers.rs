@@ -24,7 +24,6 @@ The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
 It is guaranteed that the list represents a number that does not have leading zeros.
 */
-
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
   pub val: i32,
@@ -39,6 +38,17 @@ impl ListNode {
       val
     }
   }
+}
+
+pub fn generate_nodes(nums: Vec<i32>) -> Option<Box<ListNode>> {
+    let mut output = Box::new(ListNode::new(nums[0]));
+    let mut current = &mut output;
+    for i in 1..nums.len() {
+        let b = Box::new(ListNode::new(nums[i]));
+        (*current).next = Some(b);
+        current = current.next.as_mut()?;
+    }
+    Some(output)
 }
 
 pub fn solution(

@@ -23,7 +23,6 @@ nums2.length == n
 1 <= m + n <= 2000
 -106 <= nums1[i], nums2[i] <= 106
 */
-
 pub fn solution(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
     let mut vec = nums1.clone();
     vec.append(&mut nums2.clone());

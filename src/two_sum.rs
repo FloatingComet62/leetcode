@@ -30,7 +30,6 @@ Only one valid answer exists.
 
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 */
-
 pub fn solution(nums: Vec<i32>, target: i32) -> Vec<i32> {
     for i in 0..(nums.len() - 1) {
         for j in (i+1)..nums.len() {

@@ -25,7 +25,6 @@ Constraints:
 0 <= s.length <= 5 * 104
 s consists of English letters, digits, symbols and spaces.
 */
-
 use std::collections::HashMap;
 
 pub fn solution(s: String) -> i32 {
