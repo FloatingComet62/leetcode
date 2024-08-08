@@ -3,7 +3,7 @@ use std::env;
 use colored::Colorize;
 use leetcode::*;
 
-const TESTS: [&str; 7] = [
+const TESTS: [&str; 8] = [
     "two_sum",
     "add_two_numbers",
     "longest_substring_without_repeating_characters",
@@ -11,6 +11,7 @@ const TESTS: [&str; 7] = [
     "longest_palindromic_substring",
     "roman_to_integer",
     "longest_common_prefix",
+    "zigzag_conversion",
 ];
 
 fn print_help(program: &str, opts: &Options) {
@@ -174,6 +175,19 @@ fn test_program(program: &str) {
             "racecar".to_string(),
             "car".to_string()
         ]) == "");
+    } else if program == TESTS[7] {
+        test.add_test(zigzag_conversion::solution(
+            "PAYPALISHIRING".to_string(),
+            3
+        ) == "PAHNAPLSIIGYIR".to_string());
+        test.add_test(zigzag_conversion::solution(
+            "PAYPALISHIRING".to_string(),
+            4
+        ) == "PINALSIGYAHRPI".to_string());
+        test.add_test(zigzag_conversion::solution(
+            "A".to_string(),
+            1
+        ) == "A".to_string());
     } else {
         println!("Program not in the list\nThe List:");
         for i in 0..TESTS.len() {
