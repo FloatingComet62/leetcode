@@ -19,6 +19,7 @@ Constraints:
 0 <= strs[i].length <= 200
 strs[i] consists of only lowercase English letters.
 */
+use crate::Tests;
 pub fn solution(strs: Vec<String>) -> String {
     if strs.len() == 1 {
         return strs.get(0).unwrap().clone();
@@ -44,4 +45,17 @@ pub fn solution(strs: Vec<String>) -> String {
         lcp += p.to_string().as_str();
     }
     lcp
+}
+
+pub fn test(test: &mut Tests) {
+    test.add_test(solution(vec![
+        "flower".to_string(),
+        "flow".to_string(),
+        "flight".to_string()
+    ]) == "fl");
+    test.add_test(solution(vec![
+        "dog".to_string(),
+        "racecar".to_string(),
+        "car".to_string()
+    ]) == "");
 }

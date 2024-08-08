@@ -30,6 +30,8 @@ Only one valid answer exists.
 
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 */
+use crate::Tests;
+
 pub fn solution(nums: Vec<i32>, target: i32) -> Vec<i32> {
     for i in 0..(nums.len() - 1) {
         for j in (i+1)..nums.len() {
@@ -39,4 +41,10 @@ pub fn solution(nums: Vec<i32>, target: i32) -> Vec<i32> {
         }
     }
     unreachable!();
+}
+
+pub fn test(test: &mut Tests) {
+    test.add_test(solution(vec![2, 7, 11, 15], 9) == vec![0, 1]);
+    test.add_test(solution(vec![3, 2, 4], 6) == vec![1, 2]);
+    test.add_test(solution(vec![3, 3], 6) == vec![0, 1]);
 }

@@ -41,6 +41,7 @@ Constraints:
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 */
+use crate::Tests;
 use std::collections::HashMap;
 
 pub fn solution(s: String) -> i32 {
@@ -65,4 +66,10 @@ pub fn solution(s: String) -> i32 {
         }
     }
     out
+}
+
+pub fn test(test: &mut Tests) {
+    test.add_test(solution("III".to_string()) == 3);
+    test.add_test(solution("LVIII".to_string()) == 58);
+    test.add_test(solution("MCMXCIV".to_string()) == 1994);
 }

@@ -27,6 +27,8 @@ s consists of English letters, digits, symbols and spaces.
 */
 use std::collections::HashMap;
 
+use crate::Tests;
+
 pub fn solution(s: String) -> i32 {
     let mut map_of_chars: HashMap<char, usize> = HashMap::new();
     let mut substr_len = 0;
@@ -58,4 +60,10 @@ pub fn solution(s: String) -> i32 {
         max_substr_len = substr_len;
     }
     max_substr_len as i32
+}
+
+pub fn test(test: &mut Tests) {
+    test.add_test(solution("abcabcbb".to_string()) == 3);
+    test.add_test(solution("bbbbb".to_string()) == 1);
+    test.add_test(solution("pwwkew".to_string()) == 3);
 }

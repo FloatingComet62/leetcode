@@ -23,6 +23,8 @@ nums2.length == n
 1 <= m + n <= 2000
 -106 <= nums1[i], nums2[i] <= 106
 */
+use crate::Tests;
+
 pub fn solution(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
     let mut vec = nums1.clone();
     vec.append(&mut nums2.clone());
@@ -31,4 +33,9 @@ pub fn solution(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
         return vec[(vec.len()-1)/2 as usize] as f64;
     }
     f64::from(vec[vec.len()/2] + vec[vec.len()/2 -1])/2.0
+}
+
+pub fn test(test: &mut Tests) {
+    test.add_test(solution(vec![1, 3], vec![2]) == 2.0);
+    test.add_test(solution(vec![1, 2], vec![3, 4]) == 2.5);
 }

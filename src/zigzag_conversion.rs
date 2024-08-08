@@ -35,6 +35,7 @@ Constraints:
 s consists of English letters (lower-case and upper-case), ',' and '.'.
 1 <= numRows <= 1000
 */
+use crate::Tests;
 pub fn solution(s: String, num_rows: i32) -> String {
     if s.len() <= 2 || num_rows == 1 || num_rows >= s.len() as i32 {
         return s;
@@ -74,4 +75,10 @@ pub fn solution1(s: String, num_rows: i32) -> String {
         output.push(chars[i]);
     }
     output
+}
+
+pub fn test(test: &mut Tests) {
+    test.add_test(solution("PAYPALISHIRING".to_string(), 3) == "PAHNAPLSIIGYIR".to_string());
+    test.add_test(solution("PAYPALISHIRING".to_string(), 4) == "PINALSIGYAHRPI".to_string());
+    test.add_test(solution("A".to_string(), 1) == "A".to_string());
 }
