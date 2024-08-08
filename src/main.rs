@@ -2,7 +2,7 @@ use getopts::{Options, HasArg, Occur};
 use std::env;
 use leetcode::*;
 
-const TESTS: [&str; 9] = [
+const TESTS: [&str; 10] = [
     "two_sum",
     "add_two_numbers",
     "longest_substring_without_repeating_characters",
@@ -12,6 +12,7 @@ const TESTS: [&str; 9] = [
     "longest_common_prefix",
     "zigzag_conversion",
     "reverse_integer",
+    "string_to_integer_atoi",
 ];
 
 fn print_help(program: &str, opts: &Options) {
@@ -90,6 +91,8 @@ fn test_program(program: &str) {
         zigzag_conversion::test(&mut test);
     } else if program == TESTS[8] {
         reverse_integer::test(&mut test);
+    } else if program == TESTS[9] {
+        string_to_integer_atoi::test(&mut test);
     } else {
         println!("Program not in the list\nThe List:");
         for i in 0..TESTS.len() {

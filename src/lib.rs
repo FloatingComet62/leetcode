@@ -7,6 +7,7 @@ pub mod roman_to_integer;
 pub mod longest_common_prefix;
 pub mod zigzag_conversion;
 pub mod reverse_integer;
+pub mod string_to_integer_atoi;
 
 use colored::Colorize;
 
