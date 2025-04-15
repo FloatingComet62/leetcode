@@ -10,6 +10,7 @@ pub mod reverse_integer;
 pub mod string_to_integer_atoi;
 pub mod contains_duplicate;
 pub mod valid_anagram;
+pub mod group_anagrams;
 
 use colored::Colorize;
 

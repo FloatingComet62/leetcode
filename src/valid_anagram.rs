@@ -19,6 +19,9 @@ Follow up: What if the inputs contain Unicode characters? How would you adapt yo
 use crate::Tests;
 
 pub fn solution(s: String, t: String) -> bool {
+    if s.len() != t.len() {
+        return false;
+    }
     let mut chars: [u32; 26] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     for c in s.chars() {
@@ -36,4 +39,5 @@ pub fn solution(s: String, t: String) -> bool {
 pub fn test(test: &mut Tests) {
     test.add_test(solution("anagram".to_string(), "nagaram".to_string()) == true);
     test.add_test(solution("rat".to_string(), "car".to_string()) == false);
+    test.add_test(solution("ab".to_string(), "a".to_string()) == false);
 }
