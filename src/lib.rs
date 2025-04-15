@@ -8,6 +8,8 @@ pub mod longest_common_prefix;
 pub mod zigzag_conversion;
 pub mod reverse_integer;
 pub mod string_to_integer_atoi;
+pub mod contains_duplicate;
+pub mod valid_anagram;
 
 use colored::Colorize;
 
