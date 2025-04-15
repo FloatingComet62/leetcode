@@ -6,13 +6,13 @@ Example 1:
 Input: s = "abcabcbb"
 Output: 3
 Explanation: The answer is "abc", with the length of 3.
- 
+
 Example 2:
 
 Input: s = "bbbbb"
 Output: 1
 Explanation: The answer is "b", with the length of 1.
- 
+
 Example 3:
 
 Input: s = "pwwkew"
@@ -40,7 +40,7 @@ pub fn solution(s: String) -> i32 {
             return max_substr_len as i32;
         }
         let character = s.chars().nth(i).unwrap();
-        
+
         if map_of_chars.contains_key(&character) {
             map_of_chars.clear();
             if max_substr_len < substr_len {

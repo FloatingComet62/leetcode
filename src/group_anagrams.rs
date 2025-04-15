@@ -28,7 +28,9 @@ use crate::Tests;
 use std::collections::HashMap;
 
 pub fn anagram_set(s: &String) -> [u32; 26] {
-    let mut chars: [u32; 26] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let mut chars: [u32; 26] = [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    ];
     for c in s.chars() {
         chars[c as usize - 'a' as usize] += 1;
     }
@@ -37,8 +39,7 @@ pub fn anagram_set(s: &String) -> [u32; 26] {
 pub fn solution(strs: Vec<String>) -> Vec<Vec<String>> {
     let mut maps: HashMap<[u32; 26], Vec<String>> = HashMap::new();
     for str in strs {
-        maps
-            .entry(anagram_set(&str))
+        maps.entry(anagram_set(&str))
             .and_modify(|vec| vec.push(str.to_string()))
             .or_insert(vec![str.to_string()]);
     }
@@ -51,27 +52,21 @@ pub fn solution(strs: Vec<String>) -> Vec<Vec<String>> {
 
 pub fn test(test: &mut Tests) {
     // This is correct
-    test.add_test(solution(vec![
+    test.add_test(
+        solution(vec![
             "eat".to_string(),
             "tea".to_string(),
             "tan".to_string(),
             "ate".to_string(),
             "nat".to_string(),
-            "bat".to_string()
-    ]) == vec![
-        vec!["eat".to_string(), "tea".to_string(), "ate".to_string()],
-        vec!["tan".to_string(), "nat".to_string()],
-        vec!["bat".to_string()],
-    ]);
+            "bat".to_string(),
+        ]) == vec![
+            vec!["eat".to_string(), "tea".to_string(), "ate".to_string()],
+            vec!["tan".to_string(), "nat".to_string()],
+            vec!["bat".to_string()],
+        ],
+    );
 
-    test.add_test(solution(vec![
-            "".to_string(),
-    ]) == vec![
-        vec!["".to_string()],
-    ]);
-    test.add_test(solution(vec![
-            "a".to_string(),
-    ]) == vec![
-        vec!["a".to_string()],
-    ]);
+    test.add_test(solution(vec!["".to_string()]) == vec![vec!["".to_string()]]);
+    test.add_test(solution(vec!["a".to_string()]) == vec![vec!["a".to_string()]]);
 }

@@ -1,5 +1,5 @@
 /*
-Given a string s, return the longest 
+Given a string s, return the longest
 palindromic substring in s.
 
 Example 1:
@@ -7,12 +7,12 @@ Example 1:
 Input: s = "babad"
 Output: "bab"
 Explanation: "aba" is also a valid answer.
- 
+
 Example 2:
 
 Input: s = "cbbd"
 Output: "bb"
- 
+
 Constraints:
 
 1 <= s.length <= 1000
@@ -32,22 +32,28 @@ impl StringUtils for str {
         let mut byte_start = 0;
         let mut it = self.chars();
         loop {
-            if char_pos == start { break; }
+            if char_pos == start {
+                break;
+            }
             if let Some(c) = it.next() {
                 char_pos += 1;
                 byte_start += c.len_utf8();
+            } else {
+                break;
             }
-            else { break; }
         }
         char_pos = 0;
         let mut byte_end = byte_start;
         loop {
-            if char_pos == len { break; }
+            if char_pos == len {
+                break;
+            }
             if let Some(c) = it.next() {
                 char_pos += 1;
                 byte_end += c.len_utf8();
+            } else {
+                break;
             }
-            else { break; }
         }
         &self[byte_start..byte_end]
     }
@@ -84,9 +90,9 @@ pub fn solution(s: String) -> String {
         return s;
     }
     let mut max_str = s.substring(0, 1);
-    for i in 0..(s.len()-1) {
+    for i in 0..(s.len() - 1) {
         let odd = expand_from_center(s.as_str(), i, i);
-        let even = expand_from_center(s.as_str(), i, i+1);
+        let even = expand_from_center(s.as_str(), i, i + 1);
 
         if odd.len() > max_str.len() {
             max_str = odd;
@@ -102,7 +108,7 @@ pub fn solution(s: String) -> String {
 fn is_palindrome(s: &str) -> bool {
     let chars: Vec<char> = s.chars().collect();
     let s_len = s.len();
-    for i in 0..(s_len/2) {
+    for i in 0..(s_len / 2) {
         if chars[i] == chars[s_len - 1 - i] {
             continue;
         }
@@ -119,7 +125,7 @@ fn solution1(s: String) -> String {
     }
     let mut biggest_palindrome = String::new();
     for i in 0..s.len() {
-        for j in (i+biggest_palindrome.len()+1)..(s.len()+1) {
+        for j in (i + biggest_palindrome.len() + 1)..(s.len() + 1) {
             let slice = s.slice(i..j);
             if !is_palindrome(slice) {
                 continue;

@@ -48,14 +48,18 @@ pub fn solution(strs: Vec<String>) -> String {
 }
 
 pub fn test(test: &mut Tests) {
-    test.add_test(solution(vec![
-        "flower".to_string(),
-        "flow".to_string(),
-        "flight".to_string()
-    ]) == "fl");
-    test.add_test(solution(vec![
-        "dog".to_string(),
-        "racecar".to_string(),
-        "car".to_string()
-    ]) == "");
+    test.add_test(
+        solution(vec![
+            "flower".to_string(),
+            "flow".to_string(),
+            "flight".to_string(),
+        ]) == "fl",
+    );
+    test.add_test(
+        solution(vec![
+            "dog".to_string(),
+            "racecar".to_string(),
+            "car".to_string(),
+        ]) == "",
+    );
 }

@@ -7,7 +7,7 @@ Example 1:
 Input: nums1 = [1,3], nums2 = [2]
 Output: 2.00000
 Explanation: merged array = [1,2,3] and median is 2.
- 
+
 Example 2:
 
 Input: nums1 = [1,2], nums2 = [3,4]
@@ -30,9 +30,9 @@ pub fn solution(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
     vec.append(&mut nums2.clone());
     vec.sort();
     if vec.len() % 2 == 1 {
-        return vec[(vec.len()-1)/2 as usize] as f64;
+        return vec[(vec.len() - 1) / 2 as usize] as f64;
     }
-    f64::from(vec[vec.len()/2] + vec[vec.len()/2 -1])/2.0
+    f64::from(vec[vec.len() / 2] + vec[vec.len() / 2 - 1]) / 2.0
 }
 
 pub fn test(test: &mut Tests) {

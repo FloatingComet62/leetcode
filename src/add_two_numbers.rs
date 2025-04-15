@@ -28,18 +28,15 @@ use crate::Tests;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
-  pub val: i32,
-  pub next: Option<Box<ListNode>>
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
 }
 
 impl ListNode {
-  #[inline]
-  fn new(val: i32) -> Self {
-    ListNode {
-      next: None,
-      val
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
     }
-  }
 }
 
 fn generate_nodes(nums: Vec<i32>) -> Option<Box<ListNode>> {
@@ -53,32 +50,24 @@ fn generate_nodes(nums: Vec<i32>) -> Option<Box<ListNode>> {
     Some(output)
 }
 
-pub fn solution(
-    l1: Option<Box<ListNode>>,
-    l2: Option<Box<ListNode>>
-) -> Option<Box<ListNode>> {
+pub fn solution(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     let mut carry = false;
     let mut item1 = l1.unwrap();
     let mut item2 = l2.unwrap();
-    let mut output = ListNode::new(handle_add(
-        item1.val, item2.val,
-        &mut carry
-    ));
+    let mut output = ListNode::new(handle_add(item1.val, item2.val, &mut carry));
     let mut output_cursor = &mut output;
     loop {
         if item1.next.is_none() && item2.next.is_none() {
             if carry {
-                output_cursor.next = Some(Box::new(ListNode::new(
-                    1
-                )));
+                output_cursor.next = Some(Box::new(ListNode::new(1)));
             }
             return Some(Box::new(output));
         }
         item1 = item1.next.unwrap_or(Box::new(ListNode::new(0)));
         item2 = item2.next.unwrap_or(Box::new(ListNode::new(0)));
-        output_cursor.next = Some(Box::new(ListNode::new(
-            handle_add(item1.val, item2.val, &mut carry)
-        )));
+        output_cursor.next = Some(Box::new(ListNode::new(handle_add(
+            item1.val, item2.val, &mut carry,
+        ))));
         output_cursor = output_cursor.next.as_mut().unwrap().as_mut();
     }
 }
@@ -94,24 +83,16 @@ fn handle_add(x: i32, y: i32, carry: &mut bool) -> i32 {
 
 pub fn test(test: &mut Tests) {
     test.add_test(
-        solution(
-            generate_nodes(vec![2, 4, 3]),
-            generate_nodes(vec![5, 6, 4]),
-        ) ==
-        generate_nodes(vec![7, 0, 8]),
+        solution(generate_nodes(vec![2, 4, 3]), generate_nodes(vec![5, 6, 4]))
+            == generate_nodes(vec![7, 0, 8]),
     );
     test.add_test(
-        solution(
-            generate_nodes(vec![0]),
-            generate_nodes(vec![0]),
-        ) ==
-        generate_nodes(vec![0]),
+        solution(generate_nodes(vec![0]), generate_nodes(vec![0])) == generate_nodes(vec![0]),
     );
     test.add_test(
         solution(
             generate_nodes(vec![9, 9, 9, 9, 9, 9, 9]),
             generate_nodes(vec![9, 9, 9, 9]),
-        ) ==
-        generate_nodes(vec![8, 9, 9, 9, 0, 0, 0, 1]),
+        ) == generate_nodes(vec![8, 9, 9, 9, 0, 0, 0, 1]),
     );
 }

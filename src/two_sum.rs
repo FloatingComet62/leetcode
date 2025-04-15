@@ -18,7 +18,7 @@ Example 3:
 
 Input: nums = [3,3], target = 6
 Output: [0,1]
- 
+
 
 Constraints:
 
@@ -26,7 +26,7 @@ Constraints:
 -109 <= nums[i] <= 109
 -109 <= target <= 109
 Only one valid answer exists.
- 
+
 
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 */
@@ -34,7 +34,7 @@ use crate::Tests;
 
 pub fn solution(nums: Vec<i32>, target: i32) -> Vec<i32> {
     for i in 0..(nums.len() - 1) {
-        for j in (i+1)..nums.len() {
+        for j in (i + 1)..nums.len() {
             if nums[i] + nums[j] == target {
                 return vec![i as i32, j as i32];
             }

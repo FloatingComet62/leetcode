@@ -22,7 +22,9 @@ pub fn solution(s: String, t: String) -> bool {
     if s.len() != t.len() {
         return false;
     }
-    let mut chars: [u32; 26] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let mut chars: [u32; 26] = [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    ];
 
     for c in s.chars() {
         chars[c as usize - 'a' as usize] += 1;

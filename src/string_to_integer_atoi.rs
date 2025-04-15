@@ -81,7 +81,7 @@ use crate::Tests;
 pub fn is_alphabet(c: char) -> bool {
     match c {
         'a'..='z' | 'A'..='Z' => true,
-        _ => false
+        _ => false,
     }
 }
 

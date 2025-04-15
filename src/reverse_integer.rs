@@ -24,15 +24,18 @@ Constraints:
 use crate::Tests;
 
 pub fn solution(x: i32) -> i32 {
-    x.signum() * match x
-        .abs()
-        .to_string()
-        .chars()
-        .rev()
-        .collect::<String>().parse() {
-        Ok(num) => num,
-        Err(_) => 0
-    }
+    x.signum()
+        * match x
+            .abs()
+            .to_string()
+            .chars()
+            .rev()
+            .collect::<String>()
+            .parse()
+        {
+            Ok(num) => num,
+            Err(_) => 0,
+        }
 }
 
 pub fn test(test: &mut Tests) {
