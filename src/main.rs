@@ -2,7 +2,7 @@ use getopts::{HasArg, Occur, Options};
 use leetcode::*;
 use std::env;
 
-const TESTS: [&str; 15] = [
+const TESTS: [&str; 16] = [
     "two_sum",
     "add_two_numbers",
     "longest_substring_without_repeating_characters",
@@ -17,7 +17,8 @@ const TESTS: [&str; 15] = [
     "valid_anagram",
     "group_anagram",
     "top_k_frequent_elements",
-    "product_of_array_except_self"
+    "product_of_array_except_self",
+    "valid_sudoku",
 ];
 fn test_program(program: &str) {
     println!("Program Running: {}", program);
@@ -53,6 +54,8 @@ fn test_program(program: &str) {
         top_k_frequent_elements::test(&mut test);
     } else if program == TESTS[14] {
         product_of_array_except_self::test(&mut test);
+    } else if program == TESTS[15] {
+        valid_sudoku::test(&mut test);
     } else {
         println!("Program not in the list\nThe List:");
         for i in 0..TESTS.len() {

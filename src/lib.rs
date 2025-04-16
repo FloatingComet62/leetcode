@@ -13,6 +13,7 @@ pub mod two_sum;
 pub mod valid_anagram;
 pub mod zigzag_conversion;
 pub mod product_of_array_except_self;
+pub mod valid_sudoku;
 
 use colored::Colorize;
 
