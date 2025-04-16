@@ -12,6 +12,7 @@ pub mod top_k_frequent_elements;
 pub mod two_sum;
 pub mod valid_anagram;
 pub mod zigzag_conversion;
+pub mod product_of_array_except_self;
 
 use colored::Colorize;
 
